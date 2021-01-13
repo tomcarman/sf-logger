@@ -2,7 +2,7 @@
 
 ## Why?
 
-Most Salesforce orgs require some form of logging to overcome the limitations of the standard debug logs which do not persist. Logging frameworks often become some of your lowest level code, so its imperative that they are non-blocking to normal code - and equally that failures in the main execution can't block the DML of the logs.
+Most Salesforce orgs require some form of logging to overcome the limitations of the standard debug logs which do not persist. Logging frameworks often become some of your lowest level code, so its imperative that they are non-blocking to normal code - and equally that failures in the main execution can't block the DML of the logs. This makes Platform Events a great candidate to use, as they fire immediately, asynchronously, and in under their own execution.
 
 ## How?
 
