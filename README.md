@@ -69,7 +69,7 @@ Logger.get().publish('Hello world');
 // Also accepts Exceptions or DMLExceptions eg.
 
 try {  
-	insert new Account();
+    insert new Account();
 } catch(DMLException dmlEx) {
     Logger.get().publish(dmlEx);  
 }
