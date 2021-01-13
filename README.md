@@ -4,13 +4,21 @@
 
 Most Salesforce orgs require some form of logging to overcome the limitations of the standard debug logs which do not persist. Logging frameworks often become some of your lowest level code, so its imperative that they are non-blocking to normal code - and equally that failures in the main execution can't block the DML of the logs. This makes Platform Events a great candidate to use, as they fire immediately, asynchronously, and in under their own execution.
 
-## How?
+## Approach
 
-* Utility class to create logs
-* Log structure encapsulated in class, with subclasses to handle different types of logs (or indeed create different types of Platform Events)
+* THIS IS STILL A WORK IN PROGRESS AND NOT PRODUCTION READY
+* Utility class to create logs (Logger.cls)
+* Log structure encapsulated in class, with subclasses to handle different types of logs, or indeed create different types of Platform Events (Log.cls)
 * Platform Events are published for any logs created
 * A Trigger on the Platform Event listens for events and persists them to a Custom Object
 
+## Todo
+* Error handling for character limits (eg. stack trace too big for field)
+* Improve the Log.location matching. The current implementation is largely based on this [stackexchange post](https://salesforce.stackexchange.com/questions/180375/how-to-get-running-class-and-method-names-programmatically), but its not ideal.
+* Unit tests
+* Expand the types that can be logged
+* Stacked exceptions - could these be logged recursively?
+* Implement a basic 'JSON Viewer' in LWC to make viewing log data nicer (possibly using something already available like [json-viewer-js](https://www.npmjs.com/package/json-viewer-js)
 
 ## Installation
 
