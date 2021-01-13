@@ -64,12 +64,12 @@ public class Logger {
             this.stack.add(new Log((String)obj, severity));
         }
 
-        if(obj instanceof Exception) {
-            this.stack.add(new LogExceptn((Exception)obj));
+        else if(obj instanceof DmlException) {
+            this.stack.add(new LogDMLExceptn((DMLException)obj));
         }
 
-        if(obj instanceof DmlException) {
-            this.stack.add(new LogDMLExceptn((DMLException)obj));
+        else if(obj instanceof Exception) {
+            this.stack.add(new LogExceptn((Exception)obj));
         }
 
     }
