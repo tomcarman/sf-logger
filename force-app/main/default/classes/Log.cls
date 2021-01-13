@@ -72,32 +72,49 @@ public virtual class Log {
 
             if(location == null) {
 
-                
                 Map<String, String> locationMap = new Map<String, String>();
 
-                Matcher m = generateMatcher(
-                    new DmlException().getStackTraceString().split('\n')[5] // This line is subject to change
-                );
+                try {
 
-                if (m.find()) {
+                    List<String> stackTraceLines = new DmlException().getStackTraceString().split('\n');
+                    
+                    String relevantLine = '';
 
-                    if (String.isBlank(m.group(3))) {
-
-                        locationMap.put('className', m.group(1));
-                        locationMap.put('methodName',prettifyMethodName(m.group(2)));
-
+                    if(stackTraceLines.size() >= 6) {
+                        relevantLine = stackTraceLines[5];
+                    } else if (stackTraceLines.size() >= 3) {
+                        relevantLine = stackTraceLines[stackTraceLines.size()-2];
                     } else {
-
-                        locationMap.put('className', m.group(1) + '.' + m.group(2));
-                        locationMap.put('methodName', prettifyMethodName(m.group(3)));
-
+                        relevantLine = stackTraceLines[stackTraceLines.size()-1];
                     }
 
-                    locationMap.put('line', String.valueOf(m.group(4)));
-                    locationMap.put('column', String.valueOf(m.group(5)));
-                }
+                    Matcher m = generateMatcher(relevantLine);
 
-                location = JSON.serializePretty(locationMap);
+                    if (m.find()) {
+
+                        if (String.isBlank(m.group(3))) {
+
+                            locationMap.put('className', m.group(1));
+                            locationMap.put('methodName',prettifyMethodName(m.group(2)));
+
+                        } else {
+
+                            locationMap.put('className', m.group(1) + '.' + m.group(2));
+                            locationMap.put('methodName', prettifyMethodName(m.group(3)));
+
+                        }
+
+                        locationMap.put('line', String.valueOf(m.group(4)));
+                        locationMap.put('column', String.valueOf(m.group(5)));
+                    }
+
+                    location = JSON.serializePretty(locationMap);
+
+                } catch (Exception e) {
+                    // Allow this to silently fail and print a debug, as this can be a little finicky, and we
+                    // dont want block the creation of logs.
+                    System.debug('Failed to identify location for Log: ' + e);
+                }
             }
 
             return location; 
