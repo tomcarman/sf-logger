@@ -6,7 +6,7 @@ Most Salesforce orgs require some form of logging to overcome the limitations of
 
 ## Approach
 
-* THIS IS STILL A WORK IN PROGRESS AND NOT PRODUCTION READY
+* This is still a work in progress and is not production ready
 * Utility class to create logs (Logger.cls)
 * Log structure encapsulated in class, with subclasses to handle different types of logs, or indeed create different types of Platform Events (Log.cls)
 * Platform Events are published for any logs created
