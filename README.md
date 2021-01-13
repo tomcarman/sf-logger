@@ -57,9 +57,11 @@ sfdx force:org:open -u logger-demo
 
 ```
 // Create & immediately publish a simple log
+
 Logger.get().publish('Hello world');
 
 // Also accepts Exceptions or DMLExceptions eg.
+
 try {  
 	insert new Account();
 } catch(DMLException dmlEx) {
@@ -71,12 +73,15 @@ try {
 // can be stored on the stack before publishing
 
 Logger.get().add('Starting awesome code');
+
 // Awesome code
 // ..
 // ..
+
 Logger.get().add('Something went wrong');
 
 // Dont forget to publish the logs!
+
 Logger.get().publish();
 
 ```
@@ -86,6 +91,6 @@ Logger.get().publish();
 
 This project is heavily inspired by the following - 
 
-* The recent CodeLive by @codefriar
- 
-
+* The recent [blog post](https://developer.salesforce.com/blogs/2020/12/codelive-log-you-some-events-for-great-good.html) and [CodeLive](https://www.youtube.com/watch?v=m5l7PkaG6h0) by [@codefriar](https://github.com/codefriar) and [@ca_peterson](https://twitter.com/ca_peterson)
+ * A [demo of a similar topic](https://www.youtube.com/watch?v=yYeurYnasVc) by [@afawcett](https://github.com/afawcett)
+ * [apex-unified-logging](https://github.com/rsoesemann/apex-unified-logging) framework by [@rsoesemann](https://github.com/rsoesemann)
