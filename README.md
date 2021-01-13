@@ -22,9 +22,6 @@ Most Salesforce orgs require some form of logging to overcome the limitations of
 
 ## Installation
 
-### Existing Org
-* Deploy metadata using your normal methods
-
 ### Scratch Org
 
 1. Clone the repo 
@@ -59,6 +56,9 @@ sfdx force:org:open -u logger-demo
 
 <img width="705" alt="logdetail" src="https://user-images.githubusercontent.com/1554713/104477568-2ac81b00-55b9-11eb-86fa-a2497708501e.png">
 
+
+### Existing Org
+* Deploy metadata using your normal methods
 
 
 # Usage
