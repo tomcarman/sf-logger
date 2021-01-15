@@ -6,6 +6,7 @@ Most Salesforce orgs require some form of logging to overcome the limitations of
 
 * This is still a work in progress and is not production ready
 * Utility class to create logs (Logger.cls)
+* Batch Job to delete historic logs
 * Log structure encapsulated in class, with subclasses to handle different types of logs, or indeed create different types of Platform Events (Log.cls)
 * Platform Events are published for any logs created
 * A Trigger on the Platform Event listens for events and persists them to a Custom Object
