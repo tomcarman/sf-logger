@@ -70,9 +70,7 @@ public virtual class Log {
 
 
     protected String location {
-        set{
-            location = value;
-        }
+        
         get {
 
             if(location == null) {
@@ -125,7 +123,7 @@ public virtual class Log {
             return location; 
         }
    
-
+        protected set;
     }
     
 

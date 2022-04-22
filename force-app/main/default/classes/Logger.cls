@@ -49,9 +49,6 @@ public class Logger {
     public void add(Object obj) {
         this.add(obj, LogSeverity.INFO);
     }
-    public Integer getStackSize(){
-        return stack.size();
-    }
 
     /**
      * @description Add a log to the stack without publishing it. 

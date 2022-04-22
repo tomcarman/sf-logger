@@ -1,18 +1,17 @@
 /**
-* @author tomcarman 
-* @description Subclass of Log.cls to create Logs specific to Exceptions
+* @author ElganEllis 
+* @description Subclass of Log.cls to create Logs specific to Flow Exceptions
 */
 public class LogFlowExceptn extends Log {
 
     /**
-     * @description An instance of a generic Exception
+     * @description An instance of a Flow Exception
      */
     private FlowException ex;
 
-    private String flowName;
     /**
      * @description Constructor
-     * @param ex the exception to create the log from
+     * @param ex the flow exception to create the log from
      */
     public LogFlowExceptn(FlowException ex) { 
         
@@ -34,12 +33,12 @@ public class LogFlowExceptn extends Log {
         Map<String, String> exceptionMap = new Map<String, String>();
         exceptionMap.put('ExceptionType', ex.getTypeName());
         exceptionMap.put('Message', ex.getMessage());
-        if(ex.failingActionName!=null){
+
+        if(ex.failingActionName != null){
 
             location= 'Flow: '+ ex.flowName+ ', Action:'+ex.failingActionName;
 
-        }
-        else{
+        } else {
 
             location= 'Flow: '+ ex.flowName;
             
