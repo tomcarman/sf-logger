@@ -49,7 +49,9 @@ public class Logger {
     public void add(Object obj) {
         this.add(obj, LogSeverity.INFO);
     }
-
+    public Integer getStackSize(){
+        return stack.size();
+    }
 
     /**
      * @description Add a log to the stack without publishing it. 
@@ -67,7 +69,9 @@ public class Logger {
         else if(obj instanceof DmlException) {
             this.stack.add(new LogDMLExceptn((DMLException)obj));
         }
-
+        else if(obj instanceof FlowException) {
+            this.stack.add(new LogFlowExceptn((FlowException)obj));
+        }
         else if(obj instanceof Exception) {
             this.stack.add(new LogExceptn((Exception)obj));
         }
