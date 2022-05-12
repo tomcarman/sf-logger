@@ -67,7 +67,10 @@ public virtual class Log {
      *              Note: changes to the implementation of the Logger/Log classes could require a change to the line noted
      *                  below with an inline comment, as the stack trace could get deeper/shallower.
      */
+
+
     protected String location {
+        
         get {
 
             if(location == null) {
@@ -119,9 +122,8 @@ public virtual class Log {
 
             return location; 
         }
-
-        protected set;     
-
+   
+        protected set;
     }
     
 

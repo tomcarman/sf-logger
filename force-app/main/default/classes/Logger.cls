@@ -50,7 +50,6 @@ public class Logger {
         this.add(obj, LogSeverity.INFO);
     }
 
-
     /**
      * @description Add a log to the stack without publishing it. 
      * @param       obj An object to be parsed into a log message. 
@@ -67,7 +66,9 @@ public class Logger {
         else if(obj instanceof DmlException) {
             this.stack.add(new LogDMLExceptn((DMLException)obj));
         }
-
+        else if(obj instanceof FlowException) {
+            this.stack.add(new LogFlowExceptn((FlowException)obj));
+        }
         else if(obj instanceof Exception) {
             this.stack.add(new LogExceptn((Exception)obj));
         }
